@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './header.js'
 import Footer from './footer.js'
-import CartItems from './cartItems.js'
+import Cart from './cart/cart.js'
 
 class App extends Component {
   render() {
     return (
       <div>
         <Header/>
-        <CartItems/>
+        <Cart/>
         <Footer copy='2018'/>
       </div>
     );
