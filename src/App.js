@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <Header/>
         <CartItems/>
-        <Footer/>
+        <Footer copy='2018'/>
       </div>
     );
   }
