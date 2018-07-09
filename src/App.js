@@ -25,35 +25,39 @@ class App extends Component {
       super(props);
       this.state = {
         list: list,
-        product: '',
-        quantity: ''
       }
-      // this.state = {product: '', quantity: ''};
-      this.handleItemChange = this.handleItemChange.bind(this);
-      this.handleQuantityChange = this.handleQuantityChange.bind(this);
+      this.handleInputChange = this.handleInputChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleItemChange(event) {
-      const itemName = event.target.value;
-      const item = items.filter(item => item.name === itemName);
-        this.setState({
-          product: item[0]
-        });
+    handleInputChange(event) {
+      const { name, value } = event.target
+      if(name === 'quantity'){
+        this.setState({quantity: value})
+      }
+      if(name === 'item'){
+        const itemName = value;
+        const item = items.filter(item => item.name === itemName);
+          this.setState({
+            product: item[0]
+          });
+      }
     }
 
-    handleQuantityChange(event) {
-      this.setState({quantity: event.target.value});
-    }
-
-    handleSubmit(event) {
-      event.preventDefault();
-      const listItem = list.push({id: 3, product: this.state.product, quantity: this.state.quantity})
-      this.setState({
-        list: listItem
-      })
-      console.log(this.state)
-    }
+      handleSubmit(event) {
+        event.preventDefault();
+        let item = list.filter(item => item.product.name === this.state.product.name);
+        if (item.length === 1){
+          let current = parseInt(this.state.quantity, 10)
+          let add = parseInt(item[0].quantity, 10)
+        } else {
+          const listItem = list.push({id: 3, product: this.state.product, quantity: this.state.quantity})
+          this.setState({
+            list: listItem
+          })
+        }
+        console.log(this.state)
+      }
 
   render() {
     return (
@@ -65,8 +69,7 @@ class App extends Component {
           list={ list }
           state={ this.state }
           handleSubmit={ this.handleSubmit }
-          handleQuantityChange={this.handleQuantityChange}
-          handleItemChange={this.handleItemChange}
+          handleInputChange= { this.handleInputChange }
         />
         <Footer copy='2018'/>
       </div>

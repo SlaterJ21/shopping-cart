@@ -8,15 +8,14 @@ class AddForm extends Component {
 
           <div className="form-group">
             <label htmlFor="usr">Quantity:</label>
-            <input type="number" className="form-control" id="usr" onChange={this.props.handleQuantityChange} />
+            <input type="number" name="quantity" className="form-control" id="usr" onChange={this.props.handleInputChange} />
           </div>
           <div className="form-group">
             <label htmlFor="sel1">Products:</label>
-            <select className="form-control" id="sel1" onChange={this.props.handleItemChange} >
+            <select className="form-control" name="item" id="sel1" onChange={this.props.handleInputChange} >
               { this.props.items.map((item , i)=> <option key={i}>{ item.name }</option>)}
             </select>
           </div>
-
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     );

@@ -3,7 +3,7 @@ import './App.css';
 
 const Footer = (props) => (
   <nav className="navbar navbar-dark bg-dark">
-    <a className="navbar-brand" href="#">&copy; {props.copy}</a>
+    <a className="navbar-brand">&copy; {props.copy}</a>
   </nav>
 );
 
